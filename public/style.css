@@ -89,4 +89,13 @@ textarea {
 .error {
   color: red;
 }
+
+#main {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+#cardsSection {
+  font-size: 80%;
 }

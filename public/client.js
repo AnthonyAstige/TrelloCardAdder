@@ -1,15 +1,26 @@
 let boardChosen = false;
 
 function updateRecentlyAddedCards() {
-  $('ul#cards').html('');
+  $('#cards').html('');
    $.get('/cards', function(cards) {
-    if(cards.length > 0) {
-      $('#cardsSection').show();
-    }
-    cards.forEach(function(card) {
-      //console.log(card);
-      $('<li>' + card.boardName + ': <a target="_new" href="' + card.url + '">' + card.name + '</a></li>').appendTo('ul#cards');
-    });
+      var now = new Date();
+      // Don't display cards older than 15 minutes
+      for(var ii = 0; ii < cards.length; ii++) {
+        var card = cards[ii];
+        var added = Date.parse(card.dateLastActivity); // Trello seems ~20 seconds faster than local, but who cares for this simple app  
+        var minutesAgo = (now - added) / 1000 / 60;
+        if (minutesAgo > 15) {
+          cards.splice(ii--,1);
+        }
+      }
+
+      if(cards.length > 0) {
+        $('#cardsSection').show();
+      }
+      cards.forEach(function(card) {
+        // Display the card
+        $('<p><a target="_new" href="' + card.url + '">' + card.name + '</a> (' + card.boardName + ')</p>').appendTo('#cards');
+      });
    });
 }
 
@@ -22,6 +33,7 @@ function unchooseBoard() {
     $('#picked').hide();
     $('#description').val('');
     $('#hide').show();
+    $('#cardsSection').show();
 }
 
 function handleKeyUp(e) {
@@ -42,6 +54,7 @@ function handleKeyUp(e) {
     $('.pick').hide();
     $('#pick').hide();
     $('#picked').show();
+    $('#cardsSection').hide();
     $('#' + e.key).show();
   }
 }
