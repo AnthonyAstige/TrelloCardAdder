@@ -1,1 +1,1 @@
-# TrelloCardAdder
+Lets you add cards to your Trello projects
