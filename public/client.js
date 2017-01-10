@@ -1,8 +1,9 @@
-let boardChosen = false;
+var boardChosen = false;
+var domain = 'https://trello-card-adder.gomix.me'
 
 function updateRecentlyAddedCards() {
   $('#cards').html('');
-   $.get('/cards', function(cards) {
+   $.get(domain + '/cards', function(cards) {
       var now = new Date();
       // Don't display cards older than 15 minutes
       for(var ii = 0; ii < cards.length; ii++) {
@@ -90,7 +91,7 @@ $(function() {
     }, 2000);
     
     // Make the card
-    $.post('/addCard?' + $.param({title: title, description:description, list:list}), function(code, result) {
+    $.post(domain + '/addCard?' + $.param({title: title, description:description, list:list}), function(code, result) {
       if(code !== 'OK' || result !== 'success') {
         alert('Error adding card, see console log');
         console.log(code);

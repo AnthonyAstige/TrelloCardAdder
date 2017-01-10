@@ -2,9 +2,11 @@
 
 // init project
 var express = require('express');
+var _ = require('lodash');
 var app = express();
 
 const LISTS = JSON.parse(process.env.LISTS.replace(/'/g, '"'));
+const ORIGINS = process.env.ORIGINS && JSON.parse(process.env.ORIGINS.replace(/'/g, '"'));
 
 const Trello = require("trello");
 
@@ -16,11 +18,22 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+function allowOtherOrigins(request, response) {
+  // Only send single requested origin - http://stackoverflow.com/a/1850482
+  const origin = request.get('origin');
+  if(ORIGINS && _.includes(ORIGINS, origin)) {
+    response.header("Access-Control-Allow-Origin", origin); 
+  }
+}
+
 app.get("/cards", function (request, response) {
+  allowOtherOrigins(request, response)
   response.send(cards);
 });
 
 app.post("/addCard", function (request, response) {
+  allowOtherOrigins(request, response)
+
   // Config Trello
   const list = request.query.list;
   const trello = new Trello(LISTS[list].key, LISTS[list].token);
