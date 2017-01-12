@@ -1,5 +1,5 @@
 var boardChosen = false;
-var domain = 'https://trello-card-adder.gomix.me'
+var domain = 'https://trello-card-adder.gomix.me';
 
 function updateRecentlyAddedCards() {
   $('#cards').html('');
@@ -28,13 +28,17 @@ function updateRecentlyAddedCards() {
 function unchooseBoard() {
     boardChosen = false;
     $('#cardMakerForm').hide();
-    $('#title').val('');
     $('.pick').show();
     $('#pick').show();
     $('#picked').hide();
-    $('#description').val('');
     $('#hide').show();
     $('#cardsSection').show();
+}
+
+function isFormContent() {
+  var title = $('#title').val();
+  var description = $('#description').val();
+  return (title || description);
 }
 
 function handleKeyUp(e) {
@@ -51,6 +55,7 @@ function handleKeyUp(e) {
   if(!boardChosen && (-1 !== $.inArray(key, ['a', 's', 'z']))) {
     boardChosen = true;
     $('#cardMakerForm').show();
+    
     $('#title').focus();
     $('.pick').hide();
     $('#pick').hide();
@@ -62,11 +67,11 @@ function handleKeyUp(e) {
 
 $(function() {
   updateRecentlyAddedCards();
-  
+
   $(document).bind('keyup', handleKeyUp);
 
   $('form').submit(function(event) {
-    $(document).unbind('keyup')
+    $(document).unbind('keyup');
     event.preventDefault();
     
     // Save our values
