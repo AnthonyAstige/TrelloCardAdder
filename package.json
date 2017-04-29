@@ -2,16 +2,16 @@
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
-
   "name": "trello-car-adder",
   "version": "0.0.2",
+  "license": "MIT",
   "description": "Adds Trello cards?",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.14.0",
+    "express": "^4.15.2",
     "trello": "0.7.0",
     "lodash": "^4.17.4"
   },

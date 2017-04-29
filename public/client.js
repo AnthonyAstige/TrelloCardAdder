@@ -1,5 +1,5 @@
 var boardChosen = false;
-var domain = 'https://trello-card-adder.gomix.me';
+var domain = 'https://trello-card-adder.glitch.me';
 
 function updateRecentlyAddedCards() {
   $('#cards').html('');
@@ -52,7 +52,7 @@ function handleKeyUp(e) {
     }
   }
 
-  if(!boardChosen && (-1 !== $.inArray(key, ['a', 's', 'z']))) {
+  if(!boardChosen && (-1 !== $.inArray(key, ['a', 'c', 'j', 's', 'z']))) {
     boardChosen = true;
     $('#cardMakerForm').show();
     
