@@ -4,8 +4,16 @@
 var express = require('express');
 var _ = require('lodash');
 var app = express();
+const fs = require('fs');
 
-const LISTS = JSON.parse(process.env.LISTS.replace(/'/g, '"'));
+const LISTS = _.mapValues(
+  // Read from file
+  JSON.parse(process.env.LISTS.replace(/'/g, '"')),
+  // Add array key as keyboardShortcut to each list config object
+  (val, key) => {
+    val.keyboardShortcut = key;
+    return val;
+  });
 const ORIGINS = process.env.ORIGINS && JSON.parse(process.env.ORIGINS.replace(/'/g, '"'));
 
 const Trello = require("trello");
@@ -15,10 +23,20 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+  response.setHeader('content-type', 'text/html');
+  fs.readFile('views/index.html', 'utf8', (err, content) => {
+    // Stupid simple templating
+    const postToHtml = _.reduce(LISTS, (acc, curr) => {
+      const name = curr.name.replace(new RegExp(curr.keyboardShortcut, 'i'), `[${curr.keyboardShortcut.toUpperCase()}]`);
+      return `${acc}<h2 id="${curr.keyboardShortcut}" class="pick">${name}</h2>\n`;
+    }, '');
+    content = content.replace('{{POSTTO}}', postToHtml);
+    response.send(content);
+  });
 });
 
 app.get("/CONFIG.js", (request, response) => {
+  response.setHeader('content-type', 'text/javascript');
   allowOtherOrigins(request, response);
   const config = _.map(LISTS, (item, keyboardShortcut) => {
     return {
