@@ -1,6 +1,6 @@
+/* globals CONFIG */
 var boardChosen = false;
 var domain = 'https://trello-card-adder.glitch.me';
-
 function updateRecentlyAddedCards() {
   $('#cards').html('');
    $.get(domain + '/cards', function(cards) {
@@ -51,8 +51,9 @@ function handleKeyUp(e) {
       window.close();
     }
   }
-
-  if(!boardChosen && (-1 !== $.inArray(key, ['a', 'c', 'j', 's', 'z']))) {
+  
+  const keyboardShortcutKeys = CONFIG.map((a) => a.keyboardShortcut);
+  if(!boardChosen && (-1 !== $.inArray(key, keyboardShortcutKeys))) {
     boardChosen = true;
     $('#cardMakerForm').show();
     

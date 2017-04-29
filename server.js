@@ -18,6 +18,18 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/CONFIG.js", (request, response) => {
+  allowOtherOrigins(request, response);
+  const config = _.map(LISTS, (item, keyboardShortcut) => {
+    return {
+      keyboardShortcut: keyboardShortcut,
+      listId: item.listId,
+      name: item.name
+    }
+  })
+  response.send(`var CONFIG = ${JSON.stringify(config)};`);
+})
+
 function allowOtherOrigins(request, response) {
   // Only send single requested origin - http://stackoverflow.com/a/1850482
   const origin = request.get('origin');
