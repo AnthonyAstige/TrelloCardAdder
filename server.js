@@ -38,13 +38,16 @@ app.get("/", function (request, response) {
 app.get("/CONFIG.js", (request, response) => {
   response.setHeader('content-type', 'text/javascript');
   allowOtherOrigins(request, response);
-  const config = _.map(LISTS, (item, keyboardShortcut) => {
-    return {
-      keyboardShortcut: keyboardShortcut,
-      listId: item.listId,
-      name: item.name
-    }
-  })
+  const config = {
+    domain: process.env.DOMAIN,
+    LISTS: _.map(LISTS, (item, keyboardShortcut) => {
+      return {
+        keyboardShortcut: keyboardShortcut,
+        listId: item.listId,
+        name: item.name
+      }
+    })
+  }
   response.send(`var CONFIG = ${JSON.stringify(config)};`);
 })
 

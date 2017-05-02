@@ -19,5 +19,11 @@ LISTS="{
 
 }"
 
+DOMAIN="https://trello-card-adder.glitch.me"
+
 ORIGINS="['http://localhost:3001','https://your-static-clone-domain.com']"
 ```
+
+## Known issues
+
+Only tested in Chrome and using some ES6 features without a transpiler, so probably breaks in other browsers.

@@ -1,10 +1,9 @@
 /* globals CONFIG */
 let boardChosen = false;
-const domain = 'https://trello-card-adder.glitch.me';
 
 function updateRecentlyAddedCards() {
   $('#cards').html('');
-  $.get(domain + '/cards', (cards) => {
+  $.get(CONFIG.domain + '/cards', (cards) => {
     const now = new Date();
 
     // Forget cards older than 15 minutes
@@ -47,7 +46,7 @@ function handleKeyUp(e) {
   }
   
   // Shortcut key hit
-  const keyboardShortcutKeys = CONFIG.map((a) => a.keyboardShortcut);
+  const keyboardShortcutKeys = CONFIG.LISTS.map((a) => a.keyboardShortcut);
   if (!boardChosen && (-1 !== $.inArray(key, keyboardShortcutKeys))) {
     boardChosen = true;
     $('#cardMakerForm').show();
@@ -92,7 +91,7 @@ $(() => {
     setTimeout(displayCard, 2000);
 
     // Make the card
-    $.post(domain + '/addCard?' + $.param({title, description, list}), (code, result) => {
+    $.post(CONFIG.domain + '/addCard?' + $.param({title, description, list}), (code, result) => {
       if(code !== 'OK' || result !== 'success') {
         alert('Error adding card, see console log');
         console.log(code);

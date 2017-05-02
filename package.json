@@ -5,7 +5,7 @@
   "name": "trello-car-adder",
   "version": "0.0.2",
   "license": "MIT",
-  "description": "Adds Trello cards?",
+  "description": "Adds Trello cards with keyboard shortcuts",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
