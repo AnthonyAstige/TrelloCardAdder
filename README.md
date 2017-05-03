@@ -32,4 +32,5 @@ ORIGINS="['http://localhost:3001','https://your-static-clone-domain.com']"
 
 ## Known issues
 
-Only tested in Chrome and using some ES6 features without a transpiler, so probably breaks in other browsers.
+* Only tested in Chrome and using some ES6 features without a transpiler, so probably breaks in other browsers.
+* Provides no means of authentication. Anyone with the live project url can quickly add cards to any projects you've configured.
