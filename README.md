@@ -2,9 +2,15 @@
 
 ## GitHub Repository
 
-https://github.com/AnthonyAstige/TrelloCardAdder
+[https://github.com/AnthonyAstige/TrelloCardAdder](https://github.com/AnthonyAstige/TrelloCardAdder)
+
+## Glitch project
+
+[https://glitch.com/edit/#!/trellocardadder](https://glitch.com/edit/#!/trellocardadder)
 
 ## Glitch Configuration
+
+Remix this project and 
 
 Add something like this to your `.env` file
 
@@ -29,6 +35,17 @@ DOMAIN="https://trellocardadder.glitch.me"
 
 ORIGINS="['http://localhost:3001','https://your-static-clone-domain.com']"
 ```
+
+**LISTS** is an object as follows:
+
+* Main object key like 't' or 'u' are the keys you'll hit on your keyboard
+    * name: What to show in the interface, ideally the word(s) contain your key
+    * key & token: Values from [https://trello.com/app-key](https://trello.com/app-key)
+    * listId: Find by navigating to the list you want to add cards to in Trello, adding `.json` to the end, and searching in the source for `listId`
+
+**DOMAIN** should be set to where your glitch project shows when live
+
+**ORIGINS** is only needed if you want to host your own static copy, an empty array will suffice.
 
 ## Known issues
 
