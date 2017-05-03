@@ -1,5 +1,11 @@
 # TrelloCardAdder
 
+## GitHub Repository
+
+https://github.com/AnthonyAstige/TrelloCardAdder
+
+## Glitch Configuration
+
 Add something like this to your `.env` file
 
 ```
