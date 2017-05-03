@@ -10,9 +10,7 @@
 
 ## Glitch Configuration
 
-Remix this project and 
-
-Add something like this to your `.env` file
+Remix this project then add something like this to your `.env` file
 
 ```
 LISTS="{
