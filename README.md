@@ -25,7 +25,7 @@ LISTS="{
 
 }"
 
-DOMAIN="https://trello-card-adder.glitch.me"
+DOMAIN="https://trellocardadder.glitch.me"
 
 ORIGINS="['http://localhost:3001','https://your-static-clone-domain.com']"
 ```
