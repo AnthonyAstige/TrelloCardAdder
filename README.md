@@ -27,8 +27,7 @@ LISTS="{
       'key':'YOUR-TRELLO-USER-KEY',
       'token':'YOUR-TRELLO-USER-TOKEN',
       'listId':'YOUR-TRELLO-LIST-ID'
-    },
-
+    }
 }"
 
 DOMAIN="https://trellocardadder.glitch.me"
