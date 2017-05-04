@@ -1,5 +1,9 @@
 # TrelloCardAdder
 
+## Demo & Explination
+
+First couple minutes of [https://youtu.be/laqYkUJaJYI](https://youtu.be/laqYkUJaJYI)
+
 ## GitHub Repository
 
 [https://github.com/AnthonyAstige/TrelloCardAdder](https://github.com/AnthonyAstige/TrelloCardAdder)
@@ -9,6 +13,8 @@
 [https://glitch.com/edit/#!/trellocardadder](https://glitch.com/edit/#!/trellocardadder)
 
 ## Glitch Configuration
+
+Video setup instructions starts at 2:18 as linked: [https://youtu.be/laqYkUJaJYI?t=2m18s](https://youtu.be/laqYkUJaJYI?t=2m18s)
 
 Remix this project then add something like this to your `.env` file
 
