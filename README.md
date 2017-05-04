@@ -2,7 +2,7 @@
 
 ## Demo & Explination
 
-First couple minutes of [https://youtu.be/laqYkUJaJYI](https://youtu.be/laqYkUJaJYI)
+First couple minutes of [https://youtu.be/PNakrgWQ2Qs](https://youtu.be/PNakrgWQ2Qs)
 
 ## GitHub Repository
 
@@ -14,7 +14,7 @@ First couple minutes of [https://youtu.be/laqYkUJaJYI](https://youtu.be/laqYkUJa
 
 ## Glitch Configuration
 
-Video setup instructions starts at 2:18 as linked: [https://youtu.be/laqYkUJaJYI?t=2m18s](https://youtu.be/laqYkUJaJYI?t=2m18s)
+Video setup instructions starts at 2:18 as linked: [https://youtu.be/PNakrgWQ2Qs?t=2m18s](https://youtu.be/PNakrgWQ2Qs?t=2m18s)
 
 Remix this project then add something like this to your `.env` file
 
